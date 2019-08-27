@@ -22,13 +22,20 @@ async componentDidMount () {
 }
 
 render () {
-  const postsJsx = this.state.posts.map(post => (
-    <ListGroup.Item key={post._id}>
-      <Link to={`/posts/${post._id}`}>{post.title}</Link></ListGroup.Item>
-  ))
+  let postsJsx
+  if (this.state.posts.length === 0) {
+    postsJsx = (
+      <ListGroup.Item>No posts :( Get To Posting! </ListGroup.Item>
+    )
+  } else {
+    postsJsx = this.state.posts.map(post => (
+      <ListGroup.Item key={post._id}>
+        <Link to={`/posts/${post._id}`}>{post.title}</Link></ListGroup.Item>
+    ))
+  }
   return (
     <ListGroup>
-      <ListGroup.Item>{this.state.posts.length && postsJsx}</ListGroup.Item>
+      { postsJsx }
     </ListGroup>
   )
 }

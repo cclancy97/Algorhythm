@@ -62,6 +62,7 @@ class App extends Component {
             render={() => (
               <Post
                 user={user}
+                alert={this.alert}
               />
             )}
           />

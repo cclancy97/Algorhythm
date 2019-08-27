@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import React, { Component, Fragment } from 'react'
+import { withRouter, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import Button from 'react-bootstrap/Button'
 
@@ -8,6 +8,7 @@ import apiUrl from '../../apiConfig'
 class Post extends Component {
 state = {
   post: null,
+  deleted: false,
   comments: []
 }
 async componentDidMount () {
@@ -24,26 +25,71 @@ async componentDidMount () {
   }
 }
 
-render () {
-  const commentsJsx = this.state.comments.map(comment => (
-    <li key={comment._id}>{comment.text}</li>
-  ))
-  const { post } = this.state
-  return (
-    <div>
-      { post && (
-        <div>
-          <h1><strong>{this.state.post.title}</strong></h1>
-          <h2>{this.state.post.text}</h2>
-          <h3>Comments:{ commentsJsx }</h3>
-          {(this.props.user && post) && this.props.user._id === post.owner} {
-            <Button href={`#posts/${post._id}/edit`}>Edit Post</Button>
-          }
-        </div>
-      )}
-    </div>
-  )
-}
+ deletePost = () => {
+   axios({
+     method: 'DELETE',
+     url: `${apiUrl}/posts/${this.props.match.params.id}`,
+     headers: {
+       'Authorization': `Token token=${this.props.user.token}`
+     }
+   })
+     .then(() => {
+       this.props.alert({
+         heading: 'Sent To Russia!',
+         message: '...I mean Deleted!',
+         variant: 'danger'
+       })
+     })
+     .then(() => this.setState({ deleted: true }))
+     .catch(console.error)
+ }
+
+ render () {
+   const { post, deleted } = this.state
+   let postsJsx
+   let updateAndDelete
+
+   if (deleted) {
+     return <Redirect to={
+       {
+         pathname: '/posts'
+       }
+     }/>
+   } else if (post) {
+     updateAndDelete =
+      <Fragment>
+        <Button href={`#posts/${post._id}/edit`}>Update This Post</Button>
+        <Button onClick={this.deletePost}>Delete This Post</Button>
+      </Fragment>
+
+     postsJsx =
+      <div>
+        { post && (
+          <Fragment>
+            <h1>{post.title}</h1>
+            <h2>{post.text}</h2>
+            {(this.props.user && post) && this.props.user._id === post.owner
+              ? updateAndDelete
+              : ''
+            }
+          </Fragment>
+        )}
+      </div>
+   } else {
+     postsJsx = (
+       'Loading....'
+     )
+   }
+   const commentsJsx = this.state.comments.map(comment => (
+     <li key={comment._id}>{comment.text}</li>
+   ))
+   return (
+     <div>
+       {postsJsx}
+       {commentsJsx}
+     </div>
+   )
+ }
 }
 
 export default withRouter(Post)
