@@ -8,10 +8,12 @@ import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
-import Books from '../Books/Books'
-import Book from '../Books/Book'
-import CreateBook from '../Books/CreateBook'
-import UpdateBook from '../Books/UpdateBook'
+import Posts from '../Posts/Posts'
+import Post from '../Posts/Post'
+import CreatePost from '../Posts/CreatePost'
+import UpdatePost from '../Posts/UpdatePost'
+import Comments from '../Comments/Comments'
+import Comment from '../Comments/Comment'
 
 class App extends Component {
   constructor () {
@@ -46,7 +48,8 @@ class App extends Component {
           />
         ))}
         <main className="container">
-          <Route exact path='/books' component={Books} />
+          <Route exact path='/posts' component={Posts} />
+          <Route exact path='/comments' component={Comments} />
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
@@ -54,20 +57,37 @@ class App extends Component {
             <SignIn alert={this.alert} setUser={this.setUser} />
           )} />
           <Route
-            exact path='/books/:id'
+            exact path='/posts/:id'
             user={user}
             render={() => (
-              <Book
+              <Post
                 user={user}
               />
             )}
           />
-          <AuthenticatedRoute user={user} path='/createbook' render={() => (
-            <CreateBook user={user} alert={this.alert} />
+          <Route
+            exact path='/comments/:id'
+            user={user}
+            render={() => (
+              <Comment
+                user={user}
+              />
+            )}
+          />
+          <AuthenticatedRoute user={user} path='/createpost' render={() => (
+            <CreatePost user={user} alert={this.alert} />
           )} />
-          <AuthenticatedRoute user={user} path='/books/:id/edit' render={() => (
-            <UpdateBook user={user} alert={this.alert} />
-          )} />
+          <AuthenticatedRoute
+            user={user}
+            exact
+            path="/posts/:id/edit"
+            render={() => (
+              <UpdatePost
+                user={user}
+                alert={this.alert}
+              />
+            )}
+          />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut alert={this.alert} clearUser={this.clearUser} user={user} />
           )} />
