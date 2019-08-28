@@ -14,7 +14,8 @@ import CreatePost from '../Posts/CreatePost'
 import UpdatePost from '../Posts/UpdatePost'
 import Comments from '../Comments/Comments'
 import Comment from '../Comments/Comment'
-
+import MusicPlayer from '../Music/MusicPlayer'
+import playlist from '../playlist'
 class App extends Component {
   constructor () {
     super()
@@ -49,6 +50,12 @@ class App extends Component {
         ))}
         <main className="container">
           <Route exact path='/posts' component={Posts} />
+          <Route exact path='/' component={Posts} />
+          <Route exact path='/music' render={() => (
+            <div className='player'>
+              <MusicPlayer playlist={playlist}
+                mode='vertical'/></div>
+          )} />
           <Route exact path='/comments' component={Comments} />
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />

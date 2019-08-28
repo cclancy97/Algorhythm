@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button'
 const PostForm = ({ post, handleChange, handleSubmit }) => (
   <Form onSubmit={handleSubmit}>
     <Form.Group controlId="title">
-      <Form.Label>Title:</Form.Label>
+      <Form.Label className='auth'>Title:</Form.Label>
       <Form.Control
         type="text"
         placeholder="Post Title"
@@ -17,7 +17,7 @@ const PostForm = ({ post, handleChange, handleSubmit }) => (
     </Form.Group>
 
     <Form.Group controlId="text">
-      <Form.Label>Text:</Form.Label>
+      <Form.Label className='auth'>Text:</Form.Label>
       <Form.Control
         type="text"
         placeholder="Post Body"
@@ -26,7 +26,8 @@ const PostForm = ({ post, handleChange, handleSubmit }) => (
         name='text'
         required />
     </Form.Group>
-    <Button variant="primary" type="submit">
+
+    <Button className='font' variant="light" type="submit">
     Submit
     </Button>
   </Form>

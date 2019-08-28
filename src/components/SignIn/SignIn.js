@@ -33,7 +33,7 @@ class SignIn extends Component {
         message: messages.signInSuccess,
         variant: 'success'
       }))
-      .then(() => history.push('/'))
+      .then(() => history.push('/posts'))
       .catch(error => {
         console.error(error)
         this.setState({ email: '', password: '' })
@@ -51,10 +51,10 @@ class SignIn extends Component {
     return (
       <div className="row">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
-          <h3>Sign In</h3>
+          <h3 className='auth'>Sign In</h3>
           <Form onSubmit={this.onSignIn}>
             <Form.Group controlId="email">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label className='auth'>Email address</Form.Label>
               <Form.Control
                 required
                 type="email"
@@ -65,7 +65,7 @@ class SignIn extends Component {
               />
             </Form.Group>
             <Form.Group controlId="password">
-              <Form.Label>Password</Form.Label>
+              <Form.Label className='auth'>Password</Form.Label>
               <Form.Control
                 required
                 name="password"
@@ -75,8 +75,8 @@ class SignIn extends Component {
                 onChange={this.handleChange}
               />
             </Form.Group>
-            <Button
-              variant="primary"
+            <Button className='font'
+              variant="light"
               type="submit"
             >
               Submit

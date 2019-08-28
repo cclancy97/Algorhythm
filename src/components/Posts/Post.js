@@ -44,6 +44,17 @@ async componentDidMount () {
      .catch(console.error)
  }
 
+ addComment = () => {
+   axios({
+     method: 'POST',
+     url: `${apiUrl}/comments`,
+     headers: {
+       'Authorization': `Token token=${this.props.user.token}`
+     },
+     data: this.state.post.id
+   })
+ }
+
  render () {
    const { post, deleted } = this.state
    let postsJsx
@@ -58,16 +69,20 @@ async componentDidMount () {
    } else if (post) {
      updateAndDelete =
       <Fragment>
-        <Button href={`#posts/${post._id}/edit`}>Update This Post</Button>
-        <Button onClick={this.deletePost}>Delete This Post</Button>
+        <Button href={`#posts/${post._id}/edit`}>Update</Button>
+        <Button variant='danger' onClick={this.deletePost}>Delete</Button>
       </Fragment>
+     // AddComment =
+     //  <Fragment>
+     //    <Button onClick={this.addComment}></Button>
+     //  </Fragment>
 
      postsJsx =
       <div>
         { post && (
           <Fragment>
-            <h1>{post.title}</h1>
-            <h2>{post.text}</h2>
+            <h1 className='auth'>Title:<strong> {post.title}</strong></h1>
+            <h2 className='auth'>Body: {post.text}</h2>
             {(this.props.user && post) && this.props.user._id === post.owner
               ? updateAndDelete
               : ''
@@ -81,7 +96,7 @@ async componentDidMount () {
      )
    }
    const commentsJsx = this.state.comments.map(comment => (
-     <li key={comment._id}>{comment.text}</li>
+     <li key={comment._id}><em>Comments: {comment.text}</em></li>
    ))
    return (
      <div>
