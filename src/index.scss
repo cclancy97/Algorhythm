@@ -2,15 +2,44 @@
 
 body {
   min-height: 100vh;
+  background-image: url('papyrus-dark.png');
+}
+
+a, div, h1, h2, h3, h4 {
+  font-family: 'Lexend Zetta', sans-serif;
 }
 
 #root {
   display: grid;
   grid-auto-rows: max-content auto;
-  min-height: 100vh;
+  min-height: 50vh;
 
+  .auth {
+    color: #fff;
+    font-family: 'Lexend Zetta', sans-serif;
+  }
+  .font {
+    font-family: 'Lexend Zetta', sans-serif;
+  }
   main {
     align-self: center;
     justify-self: center;
+  }
+
+  .list{
+    background-color: #a4a4a4;
+    color: #fff;
+  }
+  .player {
+    margin-top: 10vh;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #9a9393;
+    justify-self: center;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    h3 {
+      color: #fff;
+    }
   }
 }
