@@ -159,11 +159,10 @@ export default class MusicPlayer extends Component {
   };
 
   render () {
-    const { playlist, mode, width, progressColor, btnColor, style } = this.props
+    const { playlist, mode, width, progressColor, style } = this.props
     const { play, progress, leftTime, volume, activeMusicIndex, playMode } = this.state
     const activeMusic = playlist[activeMusicIndex]
     const playModeClass = getPlayModeClass(playMode)
-    const btnStyle = { color: btnColor }
 
     return (
       <div
@@ -180,6 +179,8 @@ export default class MusicPlayer extends Component {
           </div>
           <div className="time-and-volume">
             <div className="time-remaining">-{formatTime(leftTime)}</div>
+            <br/>
+            <br/>
             <div className="volume-control">
               <i className="volume-icon fa fa-volume-up" />
               <div className="volume-bar">
@@ -192,17 +193,15 @@ export default class MusicPlayer extends Component {
             <button
               type="button"
               className={`fa fa-${playModeClass}`}
-              style={btnStyle}
               onClick={this.handleChangePlayMode}
             />
-            <button type="button" className="fa fa-step-backward" style={btnStyle} onClick={this.handlePrev} />
+            <button type="button" className="fa fa-step-backward" onClick={this.handlePrev} />
             <button
               type="button"
               className={`fa fa-${play ? 'pause' : 'play'}`}
-              style={btnStyle}
               onClick={this.handleToggle}
             />
-            <button type="button" className="fa fa-step-forward" style={btnStyle} onClick={this.handleNext} />
+            <button type="button" className="fa fa-step-forward" onClick={this.handleNext} />
           </div>
         </div>
         <div className="player-cover" style={{ backgroundImage: `url(${activeMusic.cover})` }} />

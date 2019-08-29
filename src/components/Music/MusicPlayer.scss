@@ -8,7 +8,7 @@ $font-size-sm: 0.8em !default;
 $player-time-width: 3.2em !default;
 $player-title-color: #fff !default;
 $player-artist-color: #4a4a4a !default;
-$player-time-color: #fff !default;
+$player-time-color: #000 !default;
 $player-volume-width: 50px !default;
 $player-control-font-size: 28px !default;
 $player-cover-size: 240px !default;
@@ -74,6 +74,7 @@ $player-cover-size: 240px !default;
         }
 
         .volume-bar {
+          color: $player-time-color;
           width: $player-volume-width;
           opacity: 0;
           transition: opacity 0.5s linear;

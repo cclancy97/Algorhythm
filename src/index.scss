@@ -14,7 +14,7 @@ a, div, h1, h2, h3, h4 {
   grid-auto-rows: max-content auto;
   min-height: 50vh;
 
-  .auth {
+  .auth, a {
     color: #fff;
     font-family: 'Lexend Zetta', sans-serif;
   }
@@ -26,20 +26,28 @@ a, div, h1, h2, h3, h4 {
     justify-self: center;
   }
 
+  .edit {
+    color: #000;
+  }
+
   .list{
     background-color: #a4a4a4;
     color: #fff;
+    text-align: center;
+    min-width: 20vw;
   }
   .player {
     margin-top: 10vh;
     border-radius: 10px;
-    text-align: center;
     background-color: #9a9393;
     justify-self: center;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
     h3 {
       color: #fff;
     }
+  }
+  .progress-inner {
+    background-color: #000;
   }
 }

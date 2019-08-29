@@ -69,8 +69,10 @@ async componentDidMount () {
    } else if (post) {
      updateAndDelete =
       <Fragment>
-        <Button href={`#posts/${post._id}/edit`}>Update</Button>
+        <br/>
+        <Button className='edit' variant='light' href={`#posts/${post._id}/edit`}>Update</Button>
         <Button variant='danger' onClick={this.deletePost}>Delete</Button>
+        <br/>
       </Fragment>
      // AddComment =
      //  <Fragment>

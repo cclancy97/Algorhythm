@@ -29,7 +29,7 @@ render () {
     )
   } else {
     postsJsx = this.state.posts.map(post => (
-      <ListGroup.Item className='list' key={post._id}>
+      <ListGroup.Item className='text-center list' key={post._id}>
         <Link to={`/posts/${post._id}`}>{post.title}</Link></ListGroup.Item>
     ))
   }

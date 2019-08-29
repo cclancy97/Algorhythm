@@ -19,6 +19,7 @@ const PostForm = ({ post, handleChange, handleSubmit }) => (
     <Form.Group controlId="text">
       <Form.Label className='auth'>Text:</Form.Label>
       <Form.Control
+        as="textarea"
         type="text"
         placeholder="Post Body"
         value={post.text}
