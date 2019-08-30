@@ -107,7 +107,7 @@ state = {
       </div>
    } else {
      postsJsx = (
-       'Loading....'
+       <h1 className='auth'>Loading....</h1>
      )
    }
    return (
