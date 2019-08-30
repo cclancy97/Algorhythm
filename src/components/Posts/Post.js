@@ -90,7 +90,7 @@ state = {
         { post && (
           <div>
             <h1 className='auth'>Title:<strong className='font'> {post.title}</strong></h1>
-            <h3 className='auth'>Body: {post.text}</h3>
+            <h3 className='auth'>Body: <p className='auth'>{post.text}</p></h3>
             {(this.props.user && post) && this.props.user._id === post.owner
               ? updateAndDelete
               : ''
