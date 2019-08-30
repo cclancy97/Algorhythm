@@ -1,5 +1,8 @@
 # Algorhythm: When Spotify just isn't doing it for you!
 ---
+### _Image:_
+ ![Screenshot](https://i.imgur.com/dg1UiIp.png "Screenshot")
+---
 ### _Links:_
 
 - [API Repo](https://github.com/cclancy97/Algorhythm-api)
