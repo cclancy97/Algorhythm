@@ -34,12 +34,7 @@ class SignIn extends Component {
         variant: 'success'
       }))
       .then(() => history.push('/posts'))
-      .catch(error => {
-        this.props.alert({
-          heading: 'Error!',
-          message: { error },
-          variant: 'danger'
-        })
+      .catch(() => {
         this.setState({ email: '', password: '' })
         alert({
           heading: 'Sign In Failed',

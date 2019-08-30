@@ -15,7 +15,7 @@ handleChange= event => {
   this.setState({ comment: { ...this.state.comment, [event.target.name]: event.target.value } })
 }
 handleSubmit = event => {
-  this.setState({ comment: { text: '' } })
+  this.setState({ comment: { text: '', post: this.props.post._id } })
   event.preventDefault()
   axios({
     method: 'POST',
@@ -31,13 +31,12 @@ handleSubmit = event => {
         message: ' Woo-hoo you made a comment...what do you want? A cookie?',
         variant: 'success'
       })
-      this.props.history.push(`/posts/${response.data.comment.post}`)
       this.props.onCreate(response)
     })
-    .catch(error => {
+    .catch(() => {
       this.props.alert({
         heading: 'Error!',
-        message: { error },
+        message: 'Not created!',
         variant: 'danger'
       })
     })

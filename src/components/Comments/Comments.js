@@ -32,10 +32,10 @@ class Comments extends Component {
         })
         this.props.updatePostState()
       })
-      .catch(error => {
+      .catch(() => {
         this.props.alert({
           heading: 'Error!',
-          message: { error },
+          message: 'Not Deleted',
           variant: 'danger'
         })
       })
