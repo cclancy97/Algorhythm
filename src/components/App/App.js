@@ -50,6 +50,7 @@ class App extends Component {
         ))}
         <main className="container">
           <Route exact path='/posts' component={Posts} />
+          <Route exact path='/' component={Posts} />
           <Route exact path='/music' render={() => (
             <div className='player'>
               <MusicPlayer playlist={playlist}
