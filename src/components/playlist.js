@@ -6,27 +6,27 @@ export default [
     artist: ['Queen']
   },
   {
-    url: 'http://res.cloudinary.com/alick/video/upload/v1502375674/Bedtime_Stories.mp3',
-    cover: 'http://res.cloudinary.com/alick/image/upload/v1502375978/bedtime_stories_bywggz.jpg',
-    title: 'Bedtime Stories',
-    artist: ['Jay Chou']
+    url: 'https://res.cloudinary.com/algorhythm/video/upload/v1567141421/y2mate.com_-_acdc_back_in_black_lyrics_KjJe1rBdm9U_cer7fg.mp3',
+    cover: 'https://res.cloudinary.com/algorhythm/image/upload/v1567141441/acdc-back-in-black-album-cover-650_xblfdu.jpg',
+    title: 'Back In Black',
+    artist: ['AC/DC']
   },
   {
-    url: 'http://res.cloudinary.com/alick/video/upload/v1502444212/Actor_ud8ccw.mp3',
-    cover: 'http://res.cloudinary.com/alick/image/upload/v1502444304/actor_umzdur.jpg',
-    title: '演员',
-    artist: ['薛之谦']
+    url: 'https://res.cloudinary.com/algorhythm/video/upload/v1567141800/y2mate.com_-_queen_we_are_the_champions_lyrics_Jmd4OLzhQw0_nidzra.mp3',
+    cover: 'https://res.cloudinary.com/algorhythm/image/upload/v1567012355/queen-1507300904-640x596_jzmlep.jpg',
+    title: 'We Are The Champions',
+    artist: ['Queen']
   },
   {
-    url: 'http://res.cloudinary.com/alick/video/upload/v1502444215/Bridge_of_Fate_aaksg1.mp3',
-    cover: 'http://res.cloudinary.com/alick/image/upload/v1502444306/Bridge_of_Fate_o36rem.jpg',
-    title: 'Bridge of Fate',
-    artist: ['王力宏', '谭维维']
+    url: 'https://res.cloudinary.com/algorhythm/video/upload/v1567141185/y2mate.com_-_khalid_talk_official_video_hE2Ira-Cwxo_zrbppe.mp3',
+    cover: 'https://res.cloudinary.com/algorhythm/image/upload/v1567141230/Khalid-Talk-1549559609-608x608_xo1wml.jpg',
+    title: 'Talk',
+    artist: ['Khalid']
   },
   {
-    url: 'http://res.cloudinary.com/alick/video/upload/v1502444222/Goodbye_byaom5.mp3',
-    cover: 'http://res.cloudinary.com/alick/image/upload/v1502444310/Goodbye_hpubmk.jpg',
-    title: 'Goodbye',
-    artist: ['G.E.M.']
+    url: 'https://res.cloudinary.com/algorhythm/video/upload/v1567142405/Toto_-_Africa_Lyrics_on_screen_n44o3z.mp3',
+    cover: 'https://res.cloudinary.com/algorhythm/image/upload/v1567142438/220px-Toto_Toto_IV_fwlfbv.jpg',
+    title: 'Africa',
+    artist: ['Toto']
   }
 ]
