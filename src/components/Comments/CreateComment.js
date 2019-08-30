@@ -34,7 +34,13 @@ handleSubmit = event => {
       this.props.history.push(`/posts/${response.data.comment.post}`)
       this.props.onCreate(response)
     })
-    .catch(console.error)
+    .catch(error => {
+      this.props.alert({
+        heading: 'Error!',
+        message: { error },
+        variant: 'danger'
+      })
+    })
 }
 
 render () {

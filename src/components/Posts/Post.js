@@ -21,7 +21,11 @@ state = {
        post: response.data.post
      })
    } catch (e) {
-     console.error(e)
+     this.props.alert({
+       heading: 'Error!',
+       message: { e },
+       variant: 'danger'
+     })
    }
  }
  async componentDidUpdate () {
@@ -31,7 +35,11 @@ state = {
        this.setState({ post: response.data.post })
        this.setState({ commentsUpdated: false })
      } catch (e) {
-       console.error(e)
+       this.props.alert({
+         heading: 'Error!',
+         message: { e },
+         variant: 'danger'
+       })
      }
    }
  }
@@ -51,7 +59,13 @@ state = {
        })
      })
      .then(() => this.setState({ deleted: true }))
-     .catch(console.error)
+     .catch(error => {
+       this.props.alert({
+         heading: 'Error!',
+         message: { error },
+         variant: 'danger'
+       })
+     })
  }
 
  render () {

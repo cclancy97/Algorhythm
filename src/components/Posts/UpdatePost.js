@@ -43,7 +43,13 @@ class UpdatePost extends Component {
        })
        this.props.history.push(`/posts/${this.state.post._id}`)
      })
-     .catch(console.error)
+     .catch(error => {
+       this.props.alert({
+         heading: 'Error!',
+         message: { error },
+         variant: 'danger'
+       })
+     })
  }
  render () {
    if (!this.state.post) {

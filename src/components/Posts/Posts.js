@@ -15,8 +15,12 @@ async componentDidMount () {
   try {
     const response = await axios(`${apiUrl}/posts`)
     this.setState({ posts: response.data.posts, isLoading: false })
-  } catch (e) {
-    console.error(e)
+  } catch (error) {
+    this.props.alert({
+      heading: 'Error!',
+      message: { error },
+      variant: 'danger'
+    })
   }
 }
 

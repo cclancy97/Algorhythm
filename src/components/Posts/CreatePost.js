@@ -33,7 +33,13 @@ class CreatePost extends Component {
        })
        this.props.history.push(`/posts/${response.data.post._id}`)
      })
-     .catch(console.error)
+     .catch(e => {
+       this.props.alert({
+         heading: 'Error!',
+         message: { e },
+         variant: 'danger'
+       })
+     })
  }
  render () {
    return (

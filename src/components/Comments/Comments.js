@@ -32,7 +32,13 @@ class Comments extends Component {
         })
         this.props.updatePostState()
       })
-      .catch(console.error)
+      .catch(error => {
+        this.props.alert({
+          heading: 'Error!',
+          message: { error },
+          variant: 'danger'
+        })
+      })
   }
   render () {
     const comments = this.props.post.comments
