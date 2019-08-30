@@ -26,7 +26,6 @@ class CreatePost extends Component {
      data: this.state
    })
      .then(response => {
-       console.log(response.data)
        this.props.alert({
          heading: 'Success!',
          message: 'You created a post!',

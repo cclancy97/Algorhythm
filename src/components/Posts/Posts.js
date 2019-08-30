@@ -15,7 +15,6 @@ async componentDidMount () {
   try {
     const response = await axios(`${apiUrl}/posts`)
     this.setState({ posts: response.data.posts, isLoading: false })
-    console.log(response.data.posts)
   } catch (e) {
     console.error(e)
   }
@@ -30,7 +29,7 @@ render () {
   } else {
     postsJsx = this.state.posts.map(post => (
       <ListGroup.Item className='text-center list' key={post._id}>
-        <Link to={`/posts/${post._id}`}>{post.title}</Link></ListGroup.Item>
+        <h2><Link to={`/posts/${post._id}`}>{post.title}</Link></h2></ListGroup.Item>
     ))
   }
   return (

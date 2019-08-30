@@ -1,39 +1,23 @@
-import React, { Component } from 'react'
+import React, { Fragment } from 'react'
 import { withRouter } from 'react-router-dom'
-import axios from 'axios'
-// import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button'
 
-import apiUrl from '../../apiConfig'
+const Comment = ({ comment, user, handleDelete, commentOwner, updateState }) => {
+  const deleteButton = <Fragment>
+    <Button variant='danger' onClick={() => { handleDelete(comment._id) }}>Delete Comment</Button>
+  </Fragment>
+  const commentJsx =
+<Fragment>
+  <p className='font'>{comment.text}</p>
+  <Fragment>
+    {(user && comment) && user._id === comment.owner
+      ? deleteButton
+      : ''
+    }
+  </Fragment>
+</Fragment>
 
-class Comment extends Component {
-state = {
-  comment: null
-}
-async componentDidMount () {
-  try {
-    const response = await axios(`${apiUrl}/comments/${this.props.match.params.id}`)
-    console.log(response.data)
-    console.log(this.props)
-    this.setState({
-      comment: response.data.comment
-    })
-  } catch (e) {
-    console.error(e)
-  }
-}
-render () {
-  const { comment } = this.state
-  return (
-    <div>
-      {comment && (
-        <div>
-          <h1><strong>{comment.text}</strong></h1>
-          <h2>{comment.post}</h2>
-        </div>
-      )}
-    </div>
-  )
-}
+  return commentJsx
 }
 
 export default withRouter(Comment)

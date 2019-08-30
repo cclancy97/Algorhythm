@@ -1,28 +1,72 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom'
+// import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
-// import ListGroup from 'react-bootstrap/ListGroup'
+import ListGroup from 'react-bootstrap/ListGroup'
+
+import Comment from './Comment'
+import CreateComment from './CreateComment'
 
 class Comments extends Component {
-state = {
-  comments: []
-}
-
-async componentDidMount () {
-  try {
-    const response = await axios(`${apiUrl}/comments`)
-    this.setState({ comments: response.data.comments })
-    console.log(response.data.comments)
-  } catch (e) {
-    console.error(e)
+  constructor (props) {
+    super(props)
+    this.state = {
+    }
   }
-}
-render () {
-  return (
-    <h1>commments</h1>
-  )
-}
+  onCreate = () => {
+    this.props.updatePostState()
+  }
+  handleDelete = (id) => {
+    axios({
+      method: 'DELETE',
+      url: `${apiUrl}/comments/${id}`,
+      headers: {
+        'Authorization': `Token token=${this.props.user.token}`
+      }
+    })
+      .then(() => {
+        this.props.alert({
+          heading: 'Uploaded to Facebook!',
+          message: '...I mean Deleted! -NotMarkZuck',
+          variant: 'success'
+        })
+        this.props.updatePostState()
+      })
+      .catch(console.error)
+  }
+  render () {
+    const comments = this.props.post.comments
+    let commentsJsx
+    if (comments.length === 0) {
+      commentsJsx = (
+        <ListGroup.Item className='text-center list font'>No Comments😔 ...What are you waiting for?</ListGroup.Item>
+      )
+    } else {
+      commentsJsx = comments.map(comment => (
+        <ListGroup.Item className='text-center list' key={comment._id}>
+          <Comment comment={comment} user={this.props.user} post={this.props.post}
+            alert={this.props.alert}
+            handleDelete={this.handleDelete}
+          />
+        </ListGroup.Item>
+      ))
+    }
+    return (
+      <ListGroup>
+        { this.props.user &&
+        <ListGroup.Item>
+          <CreateComment
+            post={this.props.post}
+            user={this.props.user}
+            alert={this.props.alert}
+            onCreate={this.onCreate}
+          />
+        </ListGroup.Item>
+        }
+        <ListGroup.Item><h3>Comments:{commentsJsx}</h3></ListGroup.Item>
+      </ListGroup>
+    )
+  }
 }
 
 export default Comments

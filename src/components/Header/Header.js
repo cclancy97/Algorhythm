@@ -20,7 +20,7 @@ const unauthenticatedOptions = (
 const alwaysOptions = (
   <Fragment>
     <Nav.Link href="#posts">All Posts</Nav.Link>
-    <Nav.Link href="#music">MusicPlayer</Nav.Link>
+    <Nav.Link href="#music">Rhythms</Nav.Link>
   </Fragment>
 )
 

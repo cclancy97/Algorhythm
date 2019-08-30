@@ -14,6 +14,7 @@ import CreatePost from '../Posts/CreatePost'
 import UpdatePost from '../Posts/UpdatePost'
 import Comments from '../Comments/Comments'
 import Comment from '../Comments/Comment'
+import CreateComment from '../Comments/CreateComment'
 import MusicPlayer from '../Music/MusicPlayer'
 import playlist from '../playlist'
 class App extends Component {
@@ -57,6 +58,9 @@ class App extends Component {
                 mode='vertical'/></div>
           )} />
           <Route exact path='/comments' component={Comments} />
+          <AuthenticatedRoute exact path='/createcomment'user= {user} render={() => (
+            <CreateComment user={user} alert={this.alert} />
+          )} />
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
