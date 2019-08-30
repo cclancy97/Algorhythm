@@ -12,7 +12,6 @@ import Posts from '../Posts/Posts'
 import Post from '../Posts/Post'
 import CreatePost from '../Posts/CreatePost'
 import UpdatePost from '../Posts/UpdatePost'
-import Comments from '../Comments/Comments'
 import Comment from '../Comments/Comment'
 import CreateComment from '../Comments/CreateComment'
 import MusicPlayer from '../Music/MusicPlayer'
@@ -51,13 +50,11 @@ class App extends Component {
         ))}
         <main className="container">
           <Route exact path='/posts' component={Posts} />
-          <Route exact path='/' component={Posts} />
           <Route exact path='/music' render={() => (
             <div className='player'>
               <MusicPlayer playlist={playlist}
                 mode='vertical'/></div>
           )} />
-          <Route exact path='/comments' component={Comments} />
           <AuthenticatedRoute exact path='/createcomment'user= {user} render={() => (
             <CreateComment user={user} alert={this.alert} />
           )} />
